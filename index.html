@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>My App</title>
+    <!-- Add Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css" rel="stylesheet" />
+    <link href='https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css' rel='stylesheet' />
+    <script src='https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js'></script>
+  </head>
+    <style>
+      body { margin: 0; padding: 0; }
+      #map {
+        position: relative;
+        height: 100vh;
+      }
+      .map-container {
+        height: calc(100vh - 150px);
+      }
+      .map-overlay {
+          font: 12px/20px 'Arial', Arial, Helvetica, sans-serif;
+          position: absolute;
+          left: 0;
+          padding: 10px;
+      }
+      #map-2 {
+        position: relative;
+        height: 100vh;
+      }
+      .map-2-container {
+        height: 100vh;
+      }
+      .map-2-overlay {
+          font: 12px/20px 'Arial', Arial, Helvetica, sans-serif;
+          position: absolute;
+          left: 0;
+          padding: 10px;
+      }
+      #map-3 {
+        position: relative;
+        height: 100vh;
+      }
+      .map-3-container {
+        height: 100vh;
+      }
+      .map-3-overlay {
+          font: 12px/20px 'Arial', Arial, Helvetica, sans-serif;
+          position: absolute;
+          left: 0;
+          padding: 10px;
+      }
+  </style>
+  </head>
+  <body>
+    <div class="container mt-3">
+      <!-- Nav tabs -->
+      <ul class="nav nav-tabs" role="tablist">
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href="#script1">Harvard x MIT Bus Stops</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#script2">Boston Real Time Bus Tracker</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#script3">Brooklyn NY Taco Bell Pentagon</a>
+        </li>
+      </ul>
+
+      <!-- Tab panes -->
+      <div class="tab-content">
+        <div id="script1" class="container tab-pane active"><br>
+          <div class="map-container">
+            <div id="map" class="map"></div>
+          </div>            
+            <div class="map-overlay top">
+                <button style="font-size: 2em;" onclick="move()">
+                    Show bus stops
+                </button>
+                <button style="font-size: 2em;" id="reset-button-1" onclick="resetMarker()">
+                    Reset
+                </button>
+            </div>
+            <script src="script_1.js"></script>
+        </div>
+        
+        <div id="script2" class="container tab-pane fade"><br>  
+          <div class="map-2-container">
+            <div id="map-2" class="map"></div>
+          </div>          
+            <div class="map-2-overlay top">
+                <button style="font-size: 2em;" onclick="move()">
+                    Show buses
+                </button>
+                <button style="font-size: 2em;" id="reset-button-2" onclick="resetMarker()">
+                    Reset
+                </button>
+            </div>
+            <div id="locations"></div>
+            <div id="legend"></div>
+            <link rel="stylesheet" href="style.css"> 
+            <script src="script_2.js"></script>
+        </div>
+        
+        <div id="script3" class="container tab-pane fade"><br> 
+          <div class="map-3-container">
+            <div id="map-3" class="map"></div>
+            <div class="map-3-overlay top">
+              <button style="font-size: 2em;" id="submit-button-3" onclick="move()">
+                  Show taco stops
+              </button>
+              <button style="font-size: 2em;" id="reset-button-3" onclick="resetMarker()">
+                  Reset
+              </button>
+          </div>
+          </div>                      
+            <script src="script_3.js"></script>
+        </div>
+    </div>
+
+    <!-- Add Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+  </body>
+</html>
