@@ -1,127 +1,261 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>My App</title>
-    <!-- Add Bootstrap CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-    <link href="https://api.mapbox.com/mapbox-gl-js/v1.11.0/mapbox-gl.css" rel="stylesheet" />
-    <link href='https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.css' rel='stylesheet' />
-    <script src='https://api.mapbox.com/mapbox-gl-js/v2.4.1/mapbox-gl.js'></script>
-  </head>
-    <style>
-      body { margin: 0; padding: 0; }
-      #map {
-        position: relative;
-        height: 100vh;
-      }
-      .map-container {
-        height: calc(100vh - 150px);
-      }
-      .map-overlay {
-          font: 12px/20px 'Arial', Arial, Helvetica, sans-serif;
-          position: absolute;
-          left: 0;
-          padding: 10px;
-      }
-      #map-2 {
-        position: relative;
-        height: 100vh;
-      }
-      .map-2-container {
-        height: 100vh;
-      }
-      .map-2-overlay {
-          font: 12px/20px 'Arial', Arial, Helvetica, sans-serif;
-          position: absolute;
-          left: 0;
-          padding: 10px;
-      }
-      #map-3 {
-        position: relative;
-        height: 100vh;
-      }
-      .map-3-container {
-        height: 100vh;
-      }
-      .map-3-overlay {
-          font: 12px/20px 'Arial', Arial, Helvetica, sans-serif;
-          position: absolute;
-          left: 0;
-          padding: 10px;
-      }
-  </style>
-  </head>
-  <body>
-    <div class="container mt-3">
-      <!-- Nav tabs -->
-      <ul class="nav nav-tabs" role="tablist">
-        <li class="nav-item">
-          <a class="nav-link active" data-toggle="tab" href="#script1">Harvard x MIT Bus Stops</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#script2">Boston Real Time Bus Tracker</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" data-toggle="tab" href="#script3">Brooklyn NY Taco Bell Pentagon</a>
-        </li>
-      </ul>
+<html lang="en">
 
-      <!-- Tab panes -->
-      <div class="tab-content">
-        <div id="script1" class="container tab-pane active"><br>
-          <div class="map-container">
-            <div id="map" class="map"></div>
-          </div>            
-            <div class="map-overlay top">
-                <button style="font-size: 2em;" onclick="move()">
-                    Show bus stops
-                </button>
-                <button style="font-size: 2em;" id="reset-button-1" onclick="resetMarker()">
-                    Reset
-                </button>
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>R A H</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://kit.fontawesome.com/c4254e24a8.js" crossorigin="anonymous"></script>    
+    
+</head>
+
+<body>
+    <div id="header">
+        <div class="container">
+            <nav>            
+                <ul class="small-caps" id="sidemenu">
+                    <li><a href="#header">Home</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><a href="#services">Links</a></li>
+                    <li><a href="#portfolio">Portfolio</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                    <i class="fas fa-times" onclick="closemenu()"></i>
+                </ul>
+                <i class="fas fa-bars" onclick="openmenu()"></i>
+            </nav>
+                <div class="header-container">
+                        <div class="header-text">
+                          <div class="paragraph-text">
+                            <p class="small-caps"><span >Rah</span> McRae</p>
+                          </div>
+                            <h1 class="small-caps">Creative<span> Technologist</span><br>Analytics Engineer</h1>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <script src="script_1.js"></script>
-        </div>
-        
-        <div id="script2" class="container tab-pane fade"><br>  
-          <div class="map-2-container">
-            <div id="map-2" class="map"></div>
-          </div>          
-            <div class="map-2-overlay top">
-                <button style="font-size: 2em;" onclick="move()">
-                    Show buses
-                </button>
-                <button style="font-size: 2em;" id="reset-button-2" onclick="resetMarker()">
-                    Reset
-                </button>
-            </div>
-            <div id="locations"></div>
-            <div id="legend"></div>
-            <link rel="stylesheet" href="style.css"> 
-            <script src="script_2.js"></script>
-        </div>
-        
-        <div id="script3" class="container tab-pane fade"><br> 
-          <div class="map-3-container">
-            <div id="map-3" class="map"></div>
-            <div class="map-3-overlay top">
-              <button style="font-size: 2em;" id="submit-button-3" onclick="move()">
-                  Show taco stops
-              </button>
-              <button style="font-size: 2em;" id="reset-button-3" onclick="resetMarker()">
-                  Reset
-              </button>
-          </div>
-          </div>                      
-            <script src="script_3.js"></script>
         </div>
     </div>
+    <div id="geo-animation">
+        <div id="app" style="position: absolute;">            
+            <img id="image" src="moon-gif.gif" style="width: 500px; height: auto;" >
+    </div>
+    </div>    
+</body>
 
-    <!-- Add Bootstrap JS -->
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
-  </body>
+
+
+</html>
+
+
+<!-- -----------about---------- -->
+<div id="about">
+    <div class="container">
+        <div class="row">
+            <div class="about-col-1">
+                <img src="./rah.png">
+            </div>
+            <div class="about-col-2">
+                <h1 class="sub-title" >About</h1>
+                <p style="text-align: justify;"> I attended Binghamton University, School of Management for undergrad with focus on Finance & International Business. I've spent time doing service work shortly after & before climbing the corporate ladder as a data professional. I have over a decade worth of experience in data-centric roles.  
+                    I'm currently a Senior Analytics Engineer @ Fetch.
+                    <br><br>
+
+                    I'm attending a coding bootcamp through MITxPRO to obtain certification as <span>Full Stack Software Developer</span>. In my free time, I enjoy the process of exploring new technologies to expand my breadth & hone in on my creative practice.</p>
+
+                <div class="tab-titles">                    
+                    <p class="tab-links active-link" onclick="opentab('experience')">Experience</p>
+                    <p class="tab-links " onclick="opentab('skills')">Skills</p>
+                    <p class="tab-links" onclick="opentab('education')">Education</p>
+                    <p class="tab-links" onclick="opentab('extra-curriculars')">Extra Curriculars</p>
+                </div>
+                
+                <div class="tab-contents active-tab" id="experience">
+                  <ul>
+                      <li><span>2020 - Current</span><br>Analytics Engineer @ Fetch</li>
+                      <li><span>2019 - 2020</span><br>Senior Analyst @ Mediacom</li>
+                      <li><span>2018 - 2019</span><br>Strategist @ Microsoft Advertising</li>
+                      <li><span>2017 - 2018</span><br>Analyst @ Havas Media</li>
+                  </ul>
+              </div>
+                
+                <div class="tab-contents " id="skills">
+                    <ul>
+                        <li><span>Business</span><br> Thought Leadership | Solutions Driven | Synergistic Collaboration </li>
+                        <li><span>Data</span><br>Analytics | Modelling | Orchestration | Infrastructure Management</li>
+                        <li><span>Development</span><br>SQL | Python | Javascript | CSS | HTML</li>                        
+                    </ul>
+                </div>
+                
+                <div class="tab-contents" id="education">
+                    <ul>                        
+                        <li><span>2023</span><br>MITxPRO - Full Stack Development</li>
+                        <li><span>2020</span><br>General Assembly - Data Science</li>
+                        <li><span>2017</span><br>General Assembly - Data Analytics</li>
+                        <li><span>2015</span><br>Study Abroad: Lancaster Univerity (UK)</li>
+                        <li><span>2012 - 2016</span><br>Binghamton University, School of Management</li>
+                    </ul>
+                </div>
+                <div class="tab-contents" id="extra-curriculars">
+                  <ul>
+                      <li><span>COOP Careers</span> | Part-time</li>                        
+                      <li><span>2021</span><br>Executive Director</li>
+                      <li><span>2020</span><br>Account Manager</li>
+                      <li><span>2019</span><br>Senior Instructor, Data Analytics</li>
+                      <li><span>2018</span><br>Instructor, Data Analytics</li>
+                  </ul>
+              </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ---------services---------------- -->
+<div id="services">
+    <div class="container">
+        <h1 class="sub-title" style="font-weight: lighter;">Links</h1>
+
+        <div class="services-list">
+            <div>
+                <h2>GitHub</h2>
+                <br>
+                <br>
+                <p style="text-align: justify;">Code repository for all existing & work-in-progress projects. You will get a sneak peak into my various projects & programming languages of interest.<br><br>Please click below to view my GitHub.</p>
+                <br>
+                <a href="#"><a href="https://github.com/RahMcRae">GitHub</a></a>
+            </div>
+            <div>
+                <h2>Video</h2>
+                <br>
+                <br>
+                <p style="text-align: justify;">Introduction video to learn more about me and my work. More videos to come in due time!<br><br> Please click below to view my intro video.</p>
+                <br>
+                <a href="#"><a href="">Video</a></a>
+            </div>
+            <div>
+                <h2>LinkedIn</h2>
+                <br>
+                <br>
+                <p style="text-align: justify;">Public profile showcasing my experience & growing network. Happy to connect anytime!<br><br>Please click below to view my LinkedIn.</p>
+                <br>
+                <a href="#"><a href="https://www.linkedin.com/in/ramcrae/">LinkedIn</a></a>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- ----------portfolio------------ -->
+<div id="portfolio">
+    <div class="container">
+        <h1 class="sub-title">Projects</h1>
+        <div class="work-list">
+            <div class="work">
+                <img src="./pacman.png">
+                <div class="layer">
+                    <h3>Pac Man</h3>
+                    <p style="text-align: justify;">Use your arrow keys to help Pac Man move around and consume pellets. Beware of the ghosts! This game implements CSS, HTML, JS, character animation, boundary detection, and more. </p>
+                    <p>Click here to view: <a href="https://rahmcrae.github.io/portfolio-pacman/">PacMan</a></p>
+                </div>
+            </div>
+            <div class="work">
+                <img src="./eyes.png">
+                <div class="layer">
+                    <h3>Moving Eyes</h3>
+                    <p style="text-align: justify;">Move your curser to watch these two eyes follow your movements. This fun program exhibits dynamic and interactive user interfaces and web technologies.</p>
+                    <p>Click here to view: <a href="https://rahmcrae.github.io/portfolio-eyes/">Eyes+</a></p>
+                </div>
+            </div>
+            <div class="work">
+                <img src="./map.png">
+                <div class="layer">
+                    <h3>Real Time Bus Tracker</h3>
+                    <p style="text-align: justify;">This bus tracker extracts data from MBA API every 15 seconds to retrieve lat/long coordinates for all buses in this route. Also, the buttons reviel the bus stops between MIT x Harvard</p>
+                    <p>Click here to view: <a href="https://rahmcrae.github.io/portfolio-map-animation-2/"> Bus</a></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+<!-- ----------contact------------- -->
+<div id="contact">
+    <div class="container">
+        <div class="row">
+            <div class="contact-left">
+                <h1 class="sub-title">Contact Me</h1>
+                <p><i class="fas fa-paper-plane"></i>rah@consult-rah.com</p>
+                <p><i class="fas fa-phone-square-alt"></i>ask direct</p>
+                <a href="./rah-cv.png" download class="btn btn2">Download CV</a>
+            </div>
+            <div class="contact-right">
+                <form name="submit-to-google-sheet">
+                    <input type="text" name="name" placeholder="Your Name" required>
+                    <input type="email" name="email" placeholder="Your Email" required>
+                    <textarea name="message" rows="6" placeholder="Your Message"></textarea>
+                    <button type="submit" class="btn btn2">Submit</button>
+                </form>
+                <span id="msg"></span>
+            </div>
+        </div>
+    </div>
+    <div class="copyright">
+        <p >Copyright © RAH <i class="fas fa-star"></i></a></p>
+    </div>
+</div>
+
+
+<script>
+
+    var tablinks = document.getElementsByClassName("tab-links");
+    var tabcontents = document.getElementsByClassName("tab-contents");
+
+    function opentab(tabname){
+        for(tablink of tablinks){
+            tablink.classList.remove("active-link");
+        }
+        for(tabcontent of tabcontents){
+            tabcontent.classList.remove("active-tab");
+        }
+        event.currentTarget.classList.add("active-link");
+        document.getElementById(tabname).classList.add("active-tab");
+    }
+
+</script>
+
+<script>
+
+    var sidemeu = document.getElementById("sidemenu");
+
+    function openmenu(){
+        sidemeu.style.right = "0";
+    }
+    function closemenu(){
+        sidemeu.style.right = "-200px";
+    }
+
+</script>
+
+<script>
+    const scriptURL = 'https://script.google.com/macros/s/AKfycbyZHPHO5h12E7vM7MmTL6_aC2_zcuAH6XymVN9tIIyFH2IGnF-7UZtR83nKE1j87BHz/exec'
+    const form = document.forms['submit-to-google-sheet']
+    const msg = document.getElementById("msg")
+  
+    form.addEventListener('submit', e => {
+      e.preventDefault()
+      fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+        .then(response => {
+            msg.innerHTML = "Message sent successfully"
+            setTimeout(function(){
+                msg.innerHTML = ""
+            },5000)
+            form.reset()
+        })
+        .catch(error => console.error('Error!', error.message))
+    })
+  </script>
+
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/dat.gui@0.7.7/build/dat.gui.min.js"></script>
+
+</body>
 </html>
